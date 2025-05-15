@@ -41,7 +41,7 @@ extension View {
             isPresenting: isPresenting,
             duration: duration,
             onDismiss: onDismiss,
-            content: content
+            content: content as! () -> AnyView
         ))
     }
 }

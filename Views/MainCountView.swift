@@ -9,7 +9,7 @@ struct MainCountView: View {
         NavigationStack {
             VStack(spacing: 20) {
                 // Total display
-                Text("$\(viewModel.total, specifier: "%.2f")")
+                Text("$\(String(format: "%.2f", Double(truncating: NSDecimalNumber(decimal: viewModel.total))))")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.accentColor)
                 
@@ -68,7 +68,7 @@ struct DenominationView: View {
     var body: some View {
         VStack {
             // Value display
-            Text("$\(denomination.value, specifier: "%.2f")")
+            Text("$\(String(format: "%.2f", Double(truncating: NSDecimalNumber(decimal: denomination.value))))")
                 .font(.headline)
             
             // Quantity display

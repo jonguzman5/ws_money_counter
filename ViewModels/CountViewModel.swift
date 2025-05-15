@@ -1,8 +1,8 @@
 import Foundation
+import SwiftUI
 
 /// Manages the state and logic for the money counting functionality
-@Observable
-class CountViewModel {
+class CountViewModel: ObservableObject {
     /// All available denominations
     var denominations: [Denomination]
     
