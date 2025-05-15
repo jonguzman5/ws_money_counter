@@ -42,19 +42,25 @@ struct MainCountView: View {
                     }
                 }
             )
-            .toast(
-                isPresenting: $viewModel.showToast,
-                duration: 2.0,
-                onDismiss: {
-                    viewModel.showToast = false
+            .overlay(
+                Group {
+                    if viewModel.showToast {
+                        VStack {
+                            Text("All denominations cleared")
+                                .padding()
+                                .background(Color.black.opacity(0.8))
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .transition(.opacity)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                viewModel.showToast = false
+                            }
+                        }
+                    }
                 }
-            ) {
-                Text("All denominations cleared")
-                    .padding()
-                    .background(Color.black.opacity(0.8))
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
+            )
         }
     }
 }
