@@ -4,10 +4,10 @@ import SwiftUI
 /// Manages the state and logic for the money counting functionality
 class CountViewModel: ObservableObject {
     /// All available denominations
-    var denominations: [Denomination]
+    @Published var denominations: [Denomination]
     
     /// The total value of all denominations
-    var total: Decimal = 0
+    @Published var total: Decimal = 0
     
     /// Whether to show the toast for undoing clear operation
     var showToast: Bool = false
